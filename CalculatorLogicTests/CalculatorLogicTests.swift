@@ -28,4 +28,12 @@ struct CalculatorLogicTests {
         #expect(sum == 1)
     }
 
+    @Test("Add double digit number returns that number")
+    func add_doubleDigit_returnsThatNumber() async throws {
+        let sut = CalculatorLogic()
+        
+        let sum = sut.add("12")
+        
+        #expect(sum == 12)
+    }
 }
