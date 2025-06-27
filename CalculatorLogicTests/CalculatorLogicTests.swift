@@ -18,5 +18,14 @@ struct CalculatorLogicTests {
         
         #expect(sum == 0)
     }
+    
+    @Test("Add single digit returns that digit")
+    func add_singleDigit_returnsThatDigit() async throws {
+        let sut = CalculatorLogic()
+        
+        let sum = sut.add("1")
+        
+        #expect(sum == 1)
+    }
 
 }

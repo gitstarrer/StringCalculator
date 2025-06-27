@@ -10,6 +10,6 @@ import Foundation
 struct CalculatorLogic {
     
     func add(_ string: String) -> Int {
-        return 0
+        return Int(string) ?? 0
     }
 }
