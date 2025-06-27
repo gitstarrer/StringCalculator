@@ -7,3 +7,9 @@
 
 import Foundation
 
+struct CalculatorLogic {
+    
+    func add(_ string: String) -> Int {
+        return 0
+    }
+}

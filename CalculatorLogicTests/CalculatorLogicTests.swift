@@ -10,8 +10,13 @@ import Testing
 
 struct CalculatorLogicTests {
 
-    @Test func example() async throws {
-        // Write your test here and use APIs like `#expect(...)` to check expected conditions.
+    @Test("Add empty string returns 0")
+    func add_emptyString_returnsZero() async throws {
+        let sut = CalculatorLogic()
+        
+        let sum = sut.add("")
+        
+        #expect(sum == 0)
     }
 
 }
