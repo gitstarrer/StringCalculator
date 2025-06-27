@@ -11,7 +11,7 @@ import Testing
 struct CalculatorLogicTests {
 
     @Test("Add empty string returns 0")
-    func add_emptyString_returnsZero() async throws {
+    func add_emptyString_returnsZero() {
         let sut = CalculatorLogic()
         
         let sum = sut.add("")
@@ -20,7 +20,7 @@ struct CalculatorLogicTests {
     }
     
     @Test("Add single digit returns that digit")
-    func add_singleDigit_returnsThatDigit() async throws {
+    func add_singleDigit_returnsThatDigit() {
         let sut = CalculatorLogic()
         
         let sum = sut.add("1")
@@ -29,7 +29,7 @@ struct CalculatorLogicTests {
     }
 
     @Test("Add double digit number returns that number")
-    func add_doubleDigit_returnsThatNumber() async throws {
+    func add_doubleDigit_returnsThatNumber() {
         let sut = CalculatorLogic()
         
         let sum = sut.add("12")
