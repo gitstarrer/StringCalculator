@@ -9,6 +9,8 @@ import Foundation
 
 public struct CalculatorLogic {
     
+    public init(){ }
+    
     public func add(_ string: String) throws -> Int {
         guard !string.isEmpty else { return 0 }
  
@@ -84,7 +86,7 @@ public struct CalculatorLogic {
         return [","]
     }
     
-    enum Error: Swift.Error, Equatable {
+    public enum Error: Swift.Error, Equatable {
         case negativeNumberEncountered(String)
     }
 }
