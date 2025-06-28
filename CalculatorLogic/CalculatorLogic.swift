@@ -47,30 +47,18 @@ public struct CalculatorLogic {
     }
     
     private func getNumbersFrom(numberString: String, separatedBy delimiters: [String]) -> [String] {
-        let escapedDelimiters = delimiters.map { NSRegularExpression.escapedPattern(for: $0) }
-        
-        let pattern = escapedDelimiters.joined(separator: "|") + "|\n"
+        let escaped = delimiters.map(NSRegularExpression.escapedPattern(for:))
+        let pattern = escaped.joined(separator: "|") + "|\n"
         
         let regex = try! NSRegularExpression(pattern: pattern)
-        let range = NSRange(numberString.startIndex..., in: numberString)
-
-        var parts: [String] = []
-        var lastEnd = numberString.startIndex
-
-        for match in regex.matches(in: numberString, range: range) {
-            if let matchRange = Range(match.range, in: numberString) {
-                let segment = numberString[lastEnd..<matchRange.lowerBound]
-                if !segment.isEmpty {
-                    parts.append(String(segment))
-                }
-                lastEnd = matchRange.upperBound
-            }
-        }
-
-        if lastEnd < numberString.endIndex {
-            parts.append(String(numberString[lastEnd...]))
-        }
-        return parts
+        
+        let unified = regex.stringByReplacingMatches(
+            in: numberString,
+            options: [],
+            range: NSRange(location: 0, length: numberString.utf16.count),
+            withTemplate: ","
+        )
+        return unified.split(separator: ",").map(String.init)
     }
     
     private func getDelimiter(_ string: String) -> [String] {
