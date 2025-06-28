@@ -11,12 +11,8 @@ public struct CalculatorLogic {
     
     public func add(_ string: String) throws -> Int {
         guard !string.isEmpty else { return 0 }
-        var numbersString = string
-        var delimiter: Character = ","
-        if string.hasPrefix(("//")) {
-            numbersString = String(string.suffix(from: string.firstIndex(of: "\n") ?? string.startIndex))
-            delimiter = getDelimiter(string)
-        }
+ 
+        let (numbersString, delimiter) = getNumberStringAndDelimiter(for: string)
         
         let numbers = numbersString.split{ $0 == delimiter || $0 == "\n" }
         var sum = 0
@@ -39,6 +35,15 @@ public struct CalculatorLogic {
         } else {
             throw Error.negativeNumberEncountered("negative numbers not allowed <\(negativeNumbers.joined(separator: ","))>")
         }
+    }
+    
+    private func getNumberStringAndDelimiter(for string: String) -> (numbersString: String, delimiter: Character) {
+        if string.hasPrefix(("//")) {
+            let numbersString = String(string.suffix(from: string.firstIndex(of: "\n") ?? string.startIndex))
+            let delimiter = getDelimiter(string)
+            return (numbersString, delimiter)
+        }
+        return (string, ",")
     }
     
     private func getDelimiter(_ string: String) -> Character {
