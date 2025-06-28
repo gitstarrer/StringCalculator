@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct CalculatorLogic {
+public struct CalculatorLogic {
     
-    func add(_ string: String) -> Int {
+    public func add(_ string: String) -> Int {
         guard !string.isEmpty else { return 0 }
         
         let delimiter = getDelimiter(string)
@@ -21,7 +21,7 @@ struct CalculatorLogic {
         return sum
     }
     
-    func getDelimiter(_ string: String) -> Character {
+    private func getDelimiter(_ string: String) -> Character {
         var delimiter: Character = ","
         if string.hasPrefix("//"),
            let newlineIndex = string.firstIndex(of: "\n") {
