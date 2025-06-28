@@ -36,4 +36,13 @@ struct CalculatorLogicTests {
         
         #expect(sum == 12)
     }
+    
+    @Test("Add two numbers returns their sum")
+    func add_twoNumbers_returnsTheirSum() {
+        let sut = CalculatorLogic()
+        
+        let sum = sut.add("1,2")
+        
+        #expect(sum == 3)
+    }
 }
