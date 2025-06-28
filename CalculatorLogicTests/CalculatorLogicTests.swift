@@ -45,4 +45,13 @@ struct CalculatorLogicTests {
         
         #expect(sum == 3)
     }
+    
+    @Test("Add three numbers returns their sum")
+    func add_threeNumbers_returnsTheirSum() {
+        let sut = CalculatorLogic()
+        
+        let sum = sut.add("1,2,3")
+        
+        #expect(sum == 6)
+    }
 }
