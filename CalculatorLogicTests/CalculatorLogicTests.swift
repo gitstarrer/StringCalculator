@@ -72,4 +72,13 @@ struct CalculatorLogicTests {
         
         #expect(sum == 6)
     }
+    
+    @Test("Add with custom delimter")
+    func add_withCustomDelimiter_returnsTheirSum() {
+        let sut = CalculatorLogic()
+        
+        let sum = sut.add("//;\n1;2;3")
+        
+        #expect(sum == 6)
+    }
 }
