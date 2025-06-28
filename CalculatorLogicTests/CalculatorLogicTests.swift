@@ -99,4 +99,13 @@ struct CalculatorLogicTests {
             try sut.add("1,-2,-7,9,11")
         }
     }
+    
+    @Test("Ignore numbers greater than 1000")
+    func add_ignoreNumbersGreaterThan1000_returnsSumOfSmallerNumbers() {
+        let sut = CalculatorLogic()
+        
+        let sum = try? sut.add("1,2,1111,4")
+        
+        #expect(sum == 7)
+    }
 }

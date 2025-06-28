@@ -26,6 +26,9 @@ public struct CalculatorLogic {
                 if numberAsInt < 0 {
                     negativeNumbers.append(String(number))
                 } else {
+                    if numberAsInt > 1_000 {
+                        continue
+                    }
                     sum += numberAsInt
                 }
             }
