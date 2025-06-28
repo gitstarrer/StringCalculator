@@ -108,4 +108,13 @@ struct CalculatorLogicTests {
         
         #expect(sum == 7)
     }
+    
+    @Test("Handles delimiters of any length")
+    func add_handlesDelimitersOfAnyLength_returnsSumOfNumbers() {
+        let sut = CalculatorLogic()
+        
+        let sum = try? sut.add("//[***]\n1***2***3")
+        
+        #expect(sum == 6)
+    }
 }

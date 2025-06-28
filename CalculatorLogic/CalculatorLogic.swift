@@ -12,9 +12,9 @@ public struct CalculatorLogic {
     public func add(_ string: String) throws -> Int {
         guard !string.isEmpty else { return 0 }
  
-        let (numbersString, delimiter) = getNumberStringAndDelimiter(for: string)
+        let (numbersString, delimiters) = getNumberStringAndDelimiter(for: string)
+        let numbers = getNumbersFrom(numberString: numbersString, separatedBy: delimiters)
         
-        let numbers = numbersString.split{ $0 == delimiter || $0 == "\n" }
         var sum = 0
         var negativeNumbers: [String] = []
         for number in numbers {
@@ -37,21 +37,59 @@ public struct CalculatorLogic {
         }
     }
     
-    private func getNumberStringAndDelimiter(for string: String) -> (numbersString: String, delimiter: Character) {
+    private func getNumberStringAndDelimiter(for string: String) -> (numbersString: String, delimiter: [String]) {
         if string.hasPrefix(("//")) {
             let numbersString = String(string.suffix(from: string.firstIndex(of: "\n") ?? string.startIndex))
             let delimiter = getDelimiter(string)
             return (numbersString, delimiter)
         }
-        return (string, ",")
+        return (string, [","])
     }
     
-    private func getDelimiter(_ string: String) -> Character {
-        if let newlineIndex = string.firstIndex(of: "\n") {
-            let delimiter = string[string.index(before: newlineIndex)]
-            return delimiter
+    private func getNumbersFrom(numberString: String, separatedBy delimiters: [String]) -> [String] {
+        let escapedDelimiters = delimiters.map { NSRegularExpression.escapedPattern(for: $0) }
+        
+        let pattern = escapedDelimiters.joined(separator: "|") + "|\n"
+        
+        let regex = try! NSRegularExpression(pattern: pattern)
+        let range = NSRange(numberString.startIndex..., in: numberString)
+
+        var parts: [String] = []
+        var lastEnd = numberString.startIndex
+
+        for match in regex.matches(in: numberString, range: range) {
+            if let matchRange = Range(match.range, in: numberString) {
+                let segment = numberString[lastEnd..<matchRange.lowerBound]
+                if !segment.isEmpty {
+                    parts.append(String(segment))
+                }
+                lastEnd = matchRange.upperBound
+            }
         }
-        return ","
+
+        if lastEnd < numberString.endIndex {
+            parts.append(String(numberString[lastEnd...]))
+        }
+        return parts
+    }
+    
+    private func getDelimiter(_ string: String) -> [String] {
+        var delimiters: [String] = []
+        if let newlineIndex = string.firstIndex(of: "\n") {
+            let pattern = #"\[([^\[\]]+)\]"#
+            if let regex = try? NSRegularExpression(pattern: pattern) {
+                let matches = regex.matches(in: string, range: NSRange(string.startIndex..., in: string))
+               delimiters = matches.compactMap {
+                    Range($0.range(at: 1), in: string).map { String(string[$0]) }
+                }
+            }
+            if delimiters.isEmpty {
+                let delimiter = string[string.index(before: newlineIndex)]
+                delimiters.append(String(delimiter))
+            }
+            return delimiters
+        }
+        return [","]
     }
     
     enum Error: Swift.Error, Equatable {
