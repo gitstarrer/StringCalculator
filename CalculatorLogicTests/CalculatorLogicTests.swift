@@ -54,4 +54,13 @@ struct CalculatorLogicTests {
         
         #expect(sum == 6)
     }
+    
+    @Test("Add multiple numbers returns their sum")
+    func add_multipleNumbers_returnsTheirSum() {
+        let sut = CalculatorLogic()
+        
+        let sum = sut.add("1,2,3,4,5")
+        
+        #expect(sum == 15)
+    }
 }
