@@ -53,6 +53,15 @@ struct CalculatorView: View {
             let result = try calculator.add(input)
             resultText = "Sum: \(result)"
             showError = false
+        }catch let error as Calculator.Error {
+            switch error {
+            case .negativeNumberEncountered(let message):
+                resultText = message
+                showError = true
+            default:
+                resultText = "unknown error"
+                showError = true
+            }
         } catch {
             resultText = error.localizedDescription
             showError = true
