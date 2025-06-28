@@ -53,16 +53,16 @@
 		F18F3F052E0FDDAB00608816 /* Exceptions for "CalculatorLogic" folder in "StringCalculator" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Calculator.swift,
 				CalculatorLogic.docc,
-				CalculatorLogic.swift,
 			);
 			target = F1F2008C2E0F00BC009AE4AB /* StringCalculator */;
 		};
 		F18F3F062E0FDDAB00608816 /* Exceptions for "CalculatorLogic" folder in "CalculatorLogic" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
+				Calculator.swift,
 				CalculatorLogic.docc,
-				CalculatorLogic.swift,
 			);
 			target = F18F3ECF2E0F058D00608816 /* CalculatorLogic */;
 		};

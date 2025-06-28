@@ -13,7 +13,7 @@ struct CalculatorView: View {
     @State private var resultText: String = ""
     @State private var showError: Bool = false
     
-    private let calculator = CalculatorLogic()
+    private let calculator = Calculator()
     
     var body: some View {
         NavigationView {
@@ -54,10 +54,6 @@ struct CalculatorView: View {
             resultText = "Sum: \(result)"
             showError = false
         } catch {
-            if let error as CalculatorLogic.Error {
-                switch error{
-                case .
-                }
             resultText = error.localizedDescription
             showError = true
         }
