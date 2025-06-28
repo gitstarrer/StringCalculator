@@ -14,7 +14,7 @@ struct CalculatorLogicTests {
     func add_emptyString_returnsZero() {
         let sut = CalculatorLogic()
         
-        let sum = sut.add("")
+        let sum = try? sut.add("")
         
         #expect(sum == 0)
     }
@@ -23,7 +23,7 @@ struct CalculatorLogicTests {
     func add_singleDigit_returnsThatDigit() {
         let sut = CalculatorLogic()
         
-        let sum = sut.add("1")
+        let sum = try? sut.add("1")
         
         #expect(sum == 1)
     }
@@ -32,7 +32,7 @@ struct CalculatorLogicTests {
     func add_doubleDigit_returnsThatNumber() {
         let sut = CalculatorLogic()
         
-        let sum = sut.add("12")
+        let sum = try? sut.add("12")
         
         #expect(sum == 12)
     }
@@ -41,7 +41,7 @@ struct CalculatorLogicTests {
     func add_twoNumbers_returnsTheirSum() {
         let sut = CalculatorLogic()
         
-        let sum = sut.add("1,2")
+        let sum = try? sut.add("1,2")
         
         #expect(sum == 3)
     }
@@ -50,7 +50,7 @@ struct CalculatorLogicTests {
     func add_threeNumbers_returnsTheirSum() {
         let sut = CalculatorLogic()
         
-        let sum = sut.add("1,2,3")
+        let sum = try? sut.add("1,2,3")
         
         #expect(sum == 6)
     }
@@ -59,7 +59,7 @@ struct CalculatorLogicTests {
     func add_multipleNumbers_returnsTheirSum() {
         let sut = CalculatorLogic()
         
-        let sum = sut.add("1,2,3,4,5")
+        let sum = try? sut.add("1,2,3,4,5")
         
         #expect(sum == 15)
     }
@@ -68,7 +68,7 @@ struct CalculatorLogicTests {
     func add_withNewLines_returnsTheirSum() {
         let sut = CalculatorLogic()
         
-        let sum = sut.add("1\n2\n3")
+        let sum = try? sut.add("1\n2\n3")
         
         #expect(sum == 6)
     }
@@ -77,8 +77,17 @@ struct CalculatorLogicTests {
     func add_withCustomDelimiter_returnsTheirSum() {
         let sut = CalculatorLogic()
         
-        let sum = sut.add("//;\n1;2;3")
+        let sum = try? sut.add("//;\n1;2;3")
         
         #expect(sum == 6)
+    }
+    
+    @Test("Add with negative number throws an error")
+    func add_withNegativeNumber_throwsError() {
+        let sut = CalculatorLogic()
+        
+        #expect(throws: CalculatorLogic.Error.negativeNumberEncountered("negative numbers not allowed <-2>")) {
+            try sut.add("1,-2")
+        }
     }
 }
