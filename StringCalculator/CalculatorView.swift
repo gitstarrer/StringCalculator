@@ -1,3 +1,10 @@
+//
+//  CalculatorView.swift
+//  StringCalculator
+//
+//  Created by Himanshu on 28/06/25.
+//
+
 import SwiftUI
 import CalculatorLogic
 
@@ -6,7 +13,7 @@ struct CalculatorView: View {
     @State private var resultText: String = ""
     @State private var showError: Bool = false
     
-    private let calculator = StringCalculator()
+    private let calculator = CalculatorLogic()
     
     var body: some View {
         NavigationView {
@@ -47,6 +54,10 @@ struct CalculatorView: View {
             resultText = "Sum: \(result)"
             showError = false
         } catch {
+            if let error as CalculatorLogic.Error {
+                switch error{
+                case .
+                }
             resultText = error.localizedDescription
             showError = true
         }
