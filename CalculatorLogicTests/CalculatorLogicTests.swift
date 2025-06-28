@@ -63,4 +63,13 @@ struct CalculatorLogicTests {
         
         #expect(sum == 15)
     }
+    
+    @Test("Add with new lines between numbers return their sum")
+    func add_withNewLines_returnsTheirSum() {
+        let sut = CalculatorLogic()
+        
+        let sum = sut.add("1\n2\n3")
+        
+        #expect(sum == 6)
+    }
 }

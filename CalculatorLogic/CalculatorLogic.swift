@@ -13,7 +13,7 @@ struct CalculatorLogic {
         if string.isEmpty {
             return 0
         } else {
-            let numbers = string.split(separator: ",")
+            let numbers = string.split{ $0 == "," || $0 == "\n" }
             var sum = 0
             for number in numbers {
                 sum += Int(number) ?? 0
