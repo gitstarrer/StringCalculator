@@ -90,4 +90,13 @@ struct CalculatorLogicTests {
             try sut.add("1,-2")
         }
     }
+    
+    @Test("Add with multiple negative number throws an error with all the negative numbers")
+    func add_withMultipleNegativeNumbers_throwsError() {
+        let sut = CalculatorLogic()
+        
+        #expect(throws: CalculatorLogic.Error.negativeNumberEncountered("negative numbers not allowed <-2,-7>")) {
+            try sut.add("1,-2,-7,9,11")
+        }
+    }
 }

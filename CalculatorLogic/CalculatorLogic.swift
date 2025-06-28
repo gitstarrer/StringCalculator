@@ -20,13 +20,22 @@ public struct CalculatorLogic {
         
         let numbers = numbersString.split{ $0 == delimiter || $0 == "\n" }
         var sum = 0
+        var negativeNumbers: [String] = []
         for number in numbers {
-            guard let numberAsInt = Int(number), numberAsInt >= 0 else {
-              throw Error.negativeNumberEncountered("negative numbers not allowed <\(number)>")
+            if let numberAsInt = Int(String(number)) {
+                if numberAsInt < 0 {
+                    negativeNumbers.append(String(number))
+                } else {
+                    sum += numberAsInt
+                }
             }
-            sum += numberAsInt
         }
-        return sum
+        
+        if negativeNumbers.isEmpty {
+            return sum
+        } else {
+            throw Error.negativeNumberEncountered("negative numbers not allowed <\(negativeNumbers.joined(separator: ","))>")
+        }
     }
     
     private func getDelimiter(_ string: String) -> Character {
