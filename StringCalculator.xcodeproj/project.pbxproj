@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		F18F3EDB2E0F058D00608816 /* CalculatorLogic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F18F3ED02E0F058D00608816 /* CalculatorLogic.framework */; };
+		F18F3EEF2E0FDA2300608816 /* CalculatorLogic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F18F3ED02E0F058D00608816 /* CalculatorLogic.framework */; };
+		F18F3EF02E0FDA2300608816 /* CalculatorLogic.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F18F3ED02E0F058D00608816 /* CalculatorLogic.framework */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -18,7 +20,28 @@
 			remoteGlobalIDString = F18F3ECF2E0F058D00608816;
 			remoteInfo = CalculatorLogic;
 		};
+		F18F3EEC2E0FD8BA00608816 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1F200852E0F00BC009AE4AB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F18F3ECF2E0F058D00608816;
+			remoteInfo = CalculatorLogic;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F18F3EF12E0FDA2300608816 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F18F3EF02E0FDA2300608816 /* CalculatorLogic.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		F18F3ED02E0F058D00608816 /* CalculatorLogic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CalculatorLogic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,14 +49,47 @@
 		F1F2008D2E0F00BC009AE4AB /* StringCalculator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StringCalculator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		F18F3F052E0FDDAB00608816 /* Exceptions for "CalculatorLogic" folder in "StringCalculator" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CalculatorLogic.docc,
+				CalculatorLogic.swift,
+			);
+			target = F1F2008C2E0F00BC009AE4AB /* StringCalculator */;
+		};
+		F18F3F062E0FDDAB00608816 /* Exceptions for "CalculatorLogic" folder in "CalculatorLogic" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CalculatorLogic.docc,
+				CalculatorLogic.swift,
+			);
+			target = F18F3ECF2E0F058D00608816 /* CalculatorLogic */;
+		};
+		F18F3F072E0FDDAB00608816 /* Exceptions for "CalculatorLogicTests" folder in "CalculatorLogicTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				CalculatorLogicTests.swift,
+			);
+			target = F18F3ED92E0F058D00608816 /* CalculatorLogicTests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		F18F3ED12E0F058D00608816 /* CalculatorLogic */ = {
+		F18F3EFF2E0FDDAB00608816 /* CalculatorLogic */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F18F3F052E0FDDAB00608816 /* Exceptions for "CalculatorLogic" folder in "StringCalculator" target */,
+				F18F3F062E0FDDAB00608816 /* Exceptions for "CalculatorLogic" folder in "CalculatorLogic" target */,
+			);
 			path = CalculatorLogic;
 			sourceTree = "<group>";
 		};
-		F18F3EDE2E0F058D00608816 /* CalculatorLogicTests */ = {
+		F18F3F012E0FDDAB00608816 /* CalculatorLogicTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				F18F3F072E0FDDAB00608816 /* Exceptions for "CalculatorLogicTests" folder in "CalculatorLogicTests" target */,
+			);
 			path = CalculatorLogicTests;
 			sourceTree = "<group>";
 		};
@@ -64,18 +120,27 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F18F3EEF2E0FDA2300608816 /* CalculatorLogic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		F18F3EE92E0FD8BA00608816 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F18F3EFF2E0FDDAB00608816 /* CalculatorLogic */,
+				F18F3F012E0FDDAB00608816 /* CalculatorLogicTests */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		F1F200842E0F00BC009AE4AB = {
 			isa = PBXGroup;
 			children = (
 				F1F2008F2E0F00BC009AE4AB /* StringCalculator */,
-				F18F3ED12E0F058D00608816 /* CalculatorLogic */,
-				F18F3EDE2E0F058D00608816 /* CalculatorLogicTests */,
+				F18F3EE92E0FD8BA00608816 /* Frameworks */,
 				F1F2008E2E0F00BC009AE4AB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -116,9 +181,6 @@
 			);
 			dependencies = (
 			);
-			fileSystemSynchronizedGroups = (
-				F18F3ED12E0F058D00608816 /* CalculatorLogic */,
-			);
 			name = CalculatorLogic;
 			packageProductDependencies = (
 			);
@@ -139,9 +201,6 @@
 			dependencies = (
 				F18F3EDD2E0F058D00608816 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				F18F3EDE2E0F058D00608816 /* CalculatorLogicTests */,
-			);
 			name = CalculatorLogicTests;
 			packageProductDependencies = (
 			);
@@ -156,12 +215,15 @@
 				F1F200892E0F00BC009AE4AB /* Sources */,
 				F1F2008A2E0F00BC009AE4AB /* Frameworks */,
 				F1F2008B2E0F00BC009AE4AB /* Resources */,
+				F18F3EF12E0FDA2300608816 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				F18F3EED2E0FD8BA00608816 /* PBXTargetDependency */,
 			);
 			fileSystemSynchronizedGroups = (
+				F18F3EFF2E0FDDAB00608816 /* CalculatorLogic */,
 				F1F2008F2E0F00BC009AE4AB /* StringCalculator */,
 			);
 			name = StringCalculator;
@@ -267,6 +329,11 @@
 			target = F18F3ECF2E0F058D00608816 /* CalculatorLogic */;
 			targetProxy = F18F3EDC2E0F058D00608816 /* PBXContainerItemProxy */;
 		};
+		F18F3EED2E0FD8BA00608816 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F18F3ECF2E0F058D00608816 /* CalculatorLogic */;
+			targetProxy = F18F3EEC2E0FD8BA00608816 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -298,10 +365,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_MODULE = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -335,10 +405,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_INSTALL_MODULE = YES;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
