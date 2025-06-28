@@ -50,15 +50,19 @@ public struct CalculatorLogic {
         let escaped = delimiters.map(NSRegularExpression.escapedPattern(for:))
         let pattern = escaped.joined(separator: "|") + "|\n"
         
-        let regex = try! NSRegularExpression(pattern: pattern)
+        guard let regex = try? NSRegularExpression(pattern: pattern) else { return [numberString] }
+        
+        let range = NSRange(numberString.startIndex..., in: numberString)
         
         let unified = regex.stringByReplacingMatches(
             in: numberString,
             options: [],
-            range: NSRange(location: 0, length: numberString.utf16.count),
+            range: range,
             withTemplate: ","
         )
-        return unified.split(separator: ",").map(String.init)
+        return unified
+            .split(separator: ",")
+            .map(String.init)
     }
     
     private func getDelimiter(_ string: String) -> [String] {
