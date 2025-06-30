@@ -4,10 +4,9 @@ A simple iOS app that calculates the sum of numbers in a formatted string — bu
 
 This app follows the classic [String Calculator Kata](https://osherove.com/tdd-kata-1) using:
 
-- ✅ **Modular architecture**
-- ✅ **Test-driven development**
-- ✅ **Clean separation of UI and logic**
-- ✅ **Swift Package-style logic framework** (local or submodule)
+- **Modular architecture**
+- **Test-driven development**
+- **Clean separation of UI and logic**
 
 ---
 
