@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct CalculatorLogic {
+public struct Calculator {
     
     public init(){ }
     
