@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CalculatorLogic
 
 struct CalculatorView: View {
     @State private var input: String = ""
